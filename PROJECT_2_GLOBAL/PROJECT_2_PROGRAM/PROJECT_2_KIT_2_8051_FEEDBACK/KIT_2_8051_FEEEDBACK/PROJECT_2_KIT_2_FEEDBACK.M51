@@ -1,0 +1,258 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        03/07/2019  12:47:44  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL8051\C51\BIN\BL51.EXE STARTUP.obj, PROJECT_2_KIT_2_FEEDBACK.obj TO PROJECT_2_KIT_2_FEEDBACK RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  STARTUP.obj (?C_STARTUP)
+  PROJECT_2_KIT_2_FEEDBACK.obj (PROJECT_2_KIT_2_FEEDBACK)
+
+
+LINK MAP OF MODULE:  PROJECT_2_KIT_2_FEEDBACK (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0005H     UNIT         ?DT?PROJECT_2_KIT_2_FEEDBACK
+            DATA    000DH     0001H     UNIT         _DATA_GROUP_
+            IDATA   000EH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     009DH     UNIT         ?PR?MAIN?PROJECT_2_KIT_2_FEEDBACK
+            CODE    089DH     003DH     UNIT         ?PR?DISPLAY?PROJECT_2_KIT_2_FEEDBACK
+            CODE    08DAH     0024H     UNIT         ?PR?_DELAY?PROJECT_2_KIT_2_FEEDBACK
+            CODE    08FEH     000CH     UNIT         ?C_C51STARTUP
+            CODE    090AH     000AH     UNIT         ?PR?LED_PATTERN?PROJECT_2_KIT_2_FEEDBACK
+            CODE    0914H     000AH     UNIT         ?CO?PROJECT_2_KIT_2_FEEDBACK
+
+
+
+OVERLAY MAP OF MODULE:   PROJECT_2_KIT_2_FEEDBACK (?C_STARTUP)
+
+
+SEGMENT                                            DATA_GROUP 
+  +--> CALLED SEGMENT                            START    LENGTH
+----------------------------------------------------------------
+?C_C51STARTUP                                    -----    -----
+  +--> ?PR?MAIN?PROJECT_2_KIT_2_FEEDBACK
+
+?PR?MAIN?PROJECT_2_KIT_2_FEEDBACK                -----    -----
+  +--> ?PR?LED_PATTERN?PROJECT_2_KIT_2_FEEDBACK
+  +--> ?PR?DISPLAY?PROJECT_2_KIT_2_FEEDBACK
+
+?PR?DISPLAY?PROJECT_2_KIT_2_FEEDBACK             000DH    0001H
+  +--> ?PR?_DELAY?PROJECT_2_KIT_2_FEEDBACK
+
+
+
+SYMBOL TABLE OF MODULE:  PROJECT_2_KIT_2_FEEDBACK (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+BL51 BANKED LINKER/LOCATER V6.22                                                      03/07/2019  12:47:44  PAGE 2
+
+
+
+  -------         MODULE        ?C_STARTUP
+  C:08FEH         SEGMENT       ?C_C51STARTUP
+  I:000EH         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0901H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:08FEH         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:08FEH         LINE#         133
+  C:0900H         LINE#         134
+  C:0901H         LINE#         135
+  C:0902H         LINE#         136
+  C:0904H         LINE#         185
+  C:0907H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        PROJECT_2_KIT_2_FEEDBACK
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:0008H         PUBLIC        ds1
+  D:0009H         PUBLIC        ds2
+  D:000AH         PUBLIC        ds3
+  D:000BH         PUBLIC        ds4
+  D:00A8H         PUBLIC        IE
+  C:08DEH         PUBLIC        _delay
+  D:00B8H         PUBLIC        IP
+  C:090AH         PUBLIC        led_pattern
+  D:00D8H         PUBLIC        CCON
+  C:0800H         PUBLIC        main
+  C:0914H         PUBLIC        disp
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  D:000CH         PUBLIC        var
+  D:00C8H         PUBLIC        T2CON
+  B:00A0H.5       PUBLIC        fb1
+BL51 BANKED LINKER/LOCATER V6.22                                                      03/07/2019  12:47:44  PAGE 3
+
+
+  C:089DH         PUBLIC        display
+  B:00A0H.6       PUBLIC        fb2
+  D:00D0H         PUBLIC        PSW
+  B:00A0H.7       PUBLIC        fb3
+  -------         PROC          MAIN
+  C:0800H         LINE#         34
+  C:0800H         LINE#         35
+  C:0800H         LINE#         36
+  C:080BH         LINE#         41
+  C:080BH         LINE#         42
+  C:080BH         LINE#         43
+  C:080EH         LINE#         44
+  C:0811H         LINE#         46
+  C:0832H         LINE#         47
+  C:0832H         LINE#         48
+  C:0832H         LINE#         49
+  C:0835H         LINE#         50
+  C:0839H         LINE#         51
+  C:083BH         LINE#         52
+  C:083BH         LINE#         53
+  C:083DH         LINE#         55
+  C:083DH         LINE#         56
+  C:0840H         LINE#         57
+  C:0844H         LINE#         58
+  C:0846H         LINE#         59
+  C:0846H         LINE#         60
+  C:0848H         LINE#         62
+  C:0848H         LINE#         63
+  C:084BH         LINE#         64
+  C:084DH         LINE#         65
+  C:0851H         LINE#         66
+  C:0851H         LINE#         67
+  C:0853H         LINE#         69
+  C:0853H         LINE#         70
+  C:0856H         LINE#         71
+  C:085AH         LINE#         72
+  C:085CH         LINE#         73
+  C:085EH         LINE#         74
+  C:085EH         LINE#         75
+  C:0861H         LINE#         76
+  C:0863H         LINE#         77
+  C:0867H         LINE#         78
+  C:0867H         LINE#         79
+  C:0869H         LINE#         81
+  C:0869H         LINE#         82
+  C:086CH         LINE#         83
+  C:086EH         LINE#         84
+  C:0872H         LINE#         85
+  C:0872H         LINE#         86
+  C:0874H         LINE#         88
+  C:0874H         LINE#         89
+  C:0877H         LINE#         90
+  C:087DH         LINE#         91
+  C:0880H         LINE#         92
+  C:0882H         LINE#         94
+  C:0882H         LINE#         96
+  C:0888H         LINE#         97
+BL51 BANKED LINKER/LOCATER V6.22                                                      03/07/2019  12:47:44  PAGE 4
+
+
+  C:088BH         LINE#         98
+  C:088EH         LINE#         99
+  C:0891H         LINE#         100
+  C:0891H         LINE#         104
+  C:0891H         LINE#         105
+  C:0894H         LINE#         106
+  C:0897H         LINE#         107
+  C:089AH         LINE#         108
+  -------         ENDPROC       MAIN
+  -------         PROC          LED_PATTERN
+  C:090AH         LINE#         111
+  C:090AH         LINE#         112
+  C:090AH         LINE#         113
+  C:090DH         LINE#         114
+  C:0910H         LINE#         115
+  C:0913H         LINE#         117
+  -------         ENDPROC       LED_PATTERN
+  -------         PROC          DISPLAY
+  -------         DO            
+  D:000DH         SYMBOL        k
+  -------         ENDDO         
+  C:089DH         LINE#         119
+  C:089DH         LINE#         120
+  C:089DH         LINE#         122
+  C:08A0H         LINE#         123
+  C:08A0H         LINE#         124
+  C:08A3H         LINE#         125
+  C:08A6H         LINE#         126
+  C:08A9H         LINE#         127
+  C:08ACH         LINE#         128
+  C:08AFH         LINE#         129
+  C:08B2H         LINE#         130
+  C:08B5H         LINE#         131
+  C:08B8H         LINE#         132
+  C:08BBH         LINE#         133
+  C:08BEH         LINE#         134
+  C:08C1H         LINE#         135
+  C:08C4H         LINE#         136
+  C:08C7H         LINE#         137
+  C:08CAH         LINE#         138
+  C:08CDH         LINE#         139
+  C:08D0H         LINE#         140
+  C:08D9H         LINE#         141
+  -------         ENDPROC       DISPLAY
+  C:08DAH         SYMBOL        L?0033
+  -------         PROC          L?0032
+  -------         ENDPROC       L?0032
+  C:08DAH         SYMBOL        L?0033
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        time
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:08DEH         LINE#         143
+  C:08DEH         LINE#         144
+  C:08DEH         LINE#         146
+BL51 BANKED LINKER/LOCATER V6.22                                                      03/07/2019  12:47:44  PAGE 5
+
+
+  C:08E8H         LINE#         147
+  C:08FDH         LINE#         148
+  -------         ENDPROC       _DELAY
+  -------         ENDMOD        PROJECT_2_KIT_2_FEEDBACK
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?PROJECT_2_KIT_2_FEEDBACK
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0121H BYTE (14%) *
+******************************************************************************
+
+Program Size: data=15.0 xdata=0 code=289
+LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)

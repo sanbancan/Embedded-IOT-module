@@ -1,0 +1,4 @@
+"STARTUP.obj",
+"kit_1_project_2.obj" 
+TO "kit_1_project_2" 
+RAMSIZE(256) 

@@ -1,0 +1,18 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\prolific\Desktop\KIT_2_8051_FEEEDBACK\PROJECT_2_KIT_2_FEEDBACK.uvproj
+Project File Date:  03/07/2019
+
+<h2>Output:</h2>
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling PROJECT_2_KIT_2_FEEDBACK.C...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?PROJECT_2_KIT_2_FEEDBACK
+Program Size: data=15.0 xdata=0 code=289
+creating hex file from "PROJECT_2_KIT_2_FEEDBACK"...
+"PROJECT_2_KIT_2_FEEDBACK" - 0 Error(s), 1 Warning(s).

@@ -1,0 +1,4 @@
+"STARTUP.obj",
+"led_ssd_iot.obj" 
+TO "led_ssd_iot" 
+RAMSIZE(256) 

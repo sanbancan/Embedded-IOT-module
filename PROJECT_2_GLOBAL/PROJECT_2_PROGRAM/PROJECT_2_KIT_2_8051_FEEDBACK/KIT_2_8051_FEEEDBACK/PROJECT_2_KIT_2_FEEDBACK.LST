@@ -1,0 +1,175 @@
+C51 COMPILER V9.00   PROJECT_2_KIT_2_FEEDBACK                                              03/07/2019 12:47:44 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE PROJECT_2_KIT_2_FEEDBACK
+OBJECT MODULE PLACED IN PROJECT_2_KIT_2_FEEDBACK.OBJ
+COMPILER INVOKED BY: C:\Keil8051\C51\BIN\C51.EXE PROJECT_2_KIT_2_FEEDBACK.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /*---------------------------------------------------
+   2          arest nuvoton kit 2 8051 feedback circuit from kit 1
+   3          ----------------------------------------------------*/
+   4          
+   5          /*--------------------------------------------------------
+   6            KIT-1 SENDING TO SIGNAL TO LED DISPLAY AND FROM FEEDBK  
+   7            CONNECTOR WIRES GOES TO KIT-2 CONNECTOR PORT-1  AFTER READING 
+   8            DATA FROM PORT1 KIT2 THAT PATTERN OF SIGNAL KIT1 FEEDBK 
+   9            DISPLAY ON SEVEN SEGMENT ....
+  10          --------------------------------------------------------*/
+  11          
+  12          #include <REG51F.H>
+  13           
+  14          
+  15          #define ssd P0           //seven segment for output
+  16          #define led_fb P1               //port 1 for feed back
+  17          #define sl P2   //selection of 7seg and sending feedback signal to esp8266
+  18          
+  19          sbit fb1=P2^5; //feedback from keypad connector 
+  20          sbit fb2=P2^6; //feedback from keypad connector
+  21          sbit fb3=P2^7; //feedback from keypad connector
+  22          //----------------------------------------------------------------------
+  23          
+  24          void delay(unsigned int);
+  25          
+  26          void display(void);
+  27          void led_pattern();
+  28          //----------------------------------------------------------------------
+  29          unsigned char var,ds1,ds2,ds3,ds4;
+  30          
+  31          code unsigned char disp[10]={0x60,0xDA,0xF2,0x66,0xB6,0xBE,0xE0,0xFE};
+  32          //----------------------------------------------------------------------
+  33          
+  34          void main()
+  35          {
+  36   1              led_fb=ds1=ds2=ds3=ds4=0x00;
+  37   1      
+  38   1              //ds4=0x1c;             //for L
+  39   1              //ds3=0xde;             //for e
+  40   1              //ds2=0x7a;             //for d
+  41   1              while(1)
+  42   1              {
+  43   2                  led_pattern();
+  44   2                      led_fb=0xFf;  //setting input(7F) line from P1.0 TO P1.6
+  45   2      
+  46   2                      switch(led_fb)
+  47   2                      {
+  48   3                              case 0x01:
+  49   3                                      ds1=0x60;
+  50   3                                      fb1=fb2=0;              //0001
+  51   3                                      fb3=1;
+  52   3                                      led_pattern();
+  53   3                                      break;
+  54   3      
+  55   3                              case 0x02:
+C51 COMPILER V9.00   PROJECT_2_KIT_2_FEEDBACK                                              03/07/2019 12:47:44 PAGE 2   
+
+  56   3                                      ds1=0xDA;
+  57   3                                      fb1=fb3=0;              //0010
+  58   3                                      fb2=1;
+  59   3                                      led_pattern();
+  60   3                                      break;
+  61   3      
+  62   3                              case 0x04:
+  63   3                                      ds1=0xF2;
+  64   3                                      fb1=0;                  //0011
+  65   3                                      fb2=fb3=1;
+  66   3                                      led_pattern();
+  67   3                                      break;
+  68   3      
+  69   3                              case 0x08:
+  70   3                                      ds1=0x66;
+  71   3                                      fb2=fb3=0;              //0100
+  72   3                                      fb1=1;
+  73   3                                      break;
+  74   3                              case 0x10:
+  75   3                                      ds1=0xB6;
+  76   3                                      fb2=0;                  //0101
+  77   3                                      fb1=fb3=1;
+  78   3                                      led_pattern();
+  79   3                                      break;
+  80   3      
+  81   3                              case 0x20:
+  82   3                                      ds1=0xBE;
+  83   3                                      fb3=0;                  //0110
+  84   3                                      fb1=fb2=1;
+  85   3                                      led_pattern();
+  86   3                                      break;
+  87   3      
+  88   3                              case 0x40:
+  89   3                                      ds1=0xE0;
+  90   3                                      fb1=fb2=fb3=1;  //0111
+  91   3                                      led_pattern();
+  92   3                                      break;
+  93   3                         
+  94   3                         case 0x00:
+  95   3                                      //ds1=0xE0;
+  96   3                                      fb1=fb2=fb3=0;  //0111
+  97   3                                      ds4=0xfc;               //for L
+  98   3                                      ds3=0x8e;               //for e
+  99   3                                      ds2=0x8e;
+ 100   3                                      break;
+ 101   3      
+ 102   3      
+ 103   3                                       
+ 104   3                      }
+ 105   2                      led_fb=0xFF;
+ 106   2                      display();
+ 107   2                      ds1=0x00;
+ 108   2              }
+ 109   1      }
+ 110          
+ 111          void led_pattern()
+ 112          {
+ 113   1              ds4=0x1c; //pattern for L
+ 114   1              ds3=0xde; //pattern for e
+ 115   1              ds2=0x7a; //pattern for d
+ 116   1      
+ 117   1      }
+C51 COMPILER V9.00   PROJECT_2_KIT_2_FEEDBACK                                              03/07/2019 12:47:44 PAGE 3   
+
+ 118          
+ 119          void display()
+ 120          {
+ 121   1        unsigned char k;
+ 122   1        for(k=0; k<28; k++)
+ 123   1        {
+ 124   2              sl&=0xf0;
+ 125   2              sl|=0x0e;
+ 126   2              ssd=ds1;
+ 127   2              delay(5);
+ 128   2              sl&=0xf0;
+ 129   2              sl|=0x0d;
+ 130   2              ssd=ds2;
+ 131   2              delay(5);
+ 132   2              sl&=0xf0;
+ 133   2              sl|=0x0b;
+ 134   2              ssd=ds3;
+ 135   2              delay(5);
+ 136   2              sl&=0xf0;
+ 137   2              sl|=0x07;
+ 138   2              ssd=ds4;
+ 139   2              delay(5);
+ 140   2         }
+ 141   1      }
+ 142          
+ 143          void delay(unsigned int time)
+ 144          {
+ 145   1              unsigned int i,j;
+ 146   1              for(i=0;i<time;i++)
+ 147   1                      for(j=0;j<=120;j++);
+ 148   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    264    ----
+   CONSTANT SIZE    =     10    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      5       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

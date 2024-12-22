@@ -1,0 +1,172 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        01/01/2002  01:10:22  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL-ABC1\C51\BIN\BL51.EXE STARTUP.obj, led_ssd_iot.obj TO led_ssd_iot RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  STARTUP.obj (?C_STARTUP)
+  led_ssd_iot.obj (LED_SSD_IOT)
+
+
+LINK MAP OF MODULE:  led_ssd_iot (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0005H     UNIT         ?DT?LED_SSD_IOT
+            IDATA   000DH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0039H     UNIT         ?PR?MAIN?LED_SSD_IOT
+            CODE    0839H     0028H     UNIT         ?PR?DISPLAY?LED_SSD_IOT
+            CODE    0861H     0024H     UNIT         ?PR?_DELAY?LED_SSD_IOT
+            CODE    0885H     0014H     UNIT         ?CO?LED_SSD_IOT
+            CODE    0899H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   led_ssd_iot (?C_STARTUP)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?LED_SSD_IOT
+
+?PR?MAIN?LED_SSD_IOT
+  +--> ?CO?LED_SSD_IOT
+  +--> ?PR?DISPLAY?LED_SSD_IOT
+
+?PR?DISPLAY?LED_SSD_IOT
+  +--> ?PR?_DELAY?LED_SSD_IOT
+
+
+
+SYMBOL TABLE OF MODULE:  led_ssd_iot (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/01/2002  01:10:22  PAGE 2
+
+
+  C:0899H         SEGMENT       ?C_C51STARTUP
+  I:000DH         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:089CH         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:0899H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:0899H         LINE#         133
+  C:089BH         LINE#         134
+  C:089CH         LINE#         135
+  C:089DH         LINE#         136
+  C:089FH         LINE#         185
+  C:08A2H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        LED_SSD_IOT
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:0008H         PUBLIC        ds1
+  D:0009H         PUBLIC        ds2
+  D:000AH         PUBLIC        ds3
+  D:000BH         PUBLIC        ds4
+  C:0865H         PUBLIC        _delay
+  C:0800H         PUBLIC        main
+  C:0885H         PUBLIC        disp
+  D:000CH         PUBLIC        var
+  C:088FH         PUBLIC        led_val
+  C:0839H         PUBLIC        display
+  -------         PROC          MAIN
+  C:0800H         LINE#         17
+  C:0800H         LINE#         18
+  C:0800H         LINE#         19
+  C:080BH         LINE#         20
+  C:080EH         LINE#         21
+  C:0811H         LINE#         22
+  C:0814H         LINE#         24
+  C:0814H         LINE#         25
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/01/2002  01:10:22  PAGE 3
+
+
+  C:0814H         LINE#         26
+  C:0817H         LINE#         27
+  C:081DH         LINE#         28
+  C:0828H         LINE#         29
+  C:082FH         LINE#         30
+  C:0832H         LINE#         31
+  C:0837H         LINE#         32
+  -------         ENDPROC       MAIN
+  -------         PROC          DISPLAY
+  C:0839H         LINE#         38
+  C:0839H         LINE#         39
+  C:0839H         LINE#         40
+  C:083CH         LINE#         41
+  C:083FH         LINE#         42
+  C:0842H         LINE#         43
+  C:0845H         LINE#         44
+  C:0848H         LINE#         45
+  C:084BH         LINE#         46
+  C:084EH         LINE#         47
+  C:0851H         LINE#         48
+  C:0854H         LINE#         49
+  C:0857H         LINE#         50
+  C:085AH         LINE#         51
+  -------         ENDPROC       DISPLAY
+  C:0861H         SYMBOL        L?0015
+  -------         PROC          L?0014
+  -------         ENDPROC       L?0014
+  C:0861H         SYMBOL        L?0015
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        time
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:0865H         LINE#         54
+  C:0865H         LINE#         55
+  C:0865H         LINE#         57
+  C:086FH         LINE#         58
+  C:0884H         LINE#         59
+  -------         ENDPROC       _DELAY
+  -------         ENDMOD        LED_SSD_IOT
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00A8H BYTE ( 8%) *
+******************************************************************************
+
+Program Size: data=14.0 xdata=0 code=168
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
